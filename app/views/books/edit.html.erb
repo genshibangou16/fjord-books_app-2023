@@ -2,6 +2,6 @@
 <%= render "form", book: @book %>
 <br>
 <nav class="page-nav">
-  <%= link_to "Show this book", @book %> |
-  <%= link_to "Back to books", books_path %>
+  <%= link_to t('views.books.common.show'), @book %> |
+  <%= link_to t('views.books.common.back'), books_path %>
 </nav>
