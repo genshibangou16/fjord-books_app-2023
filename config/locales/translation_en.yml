@@ -11,26 +11,18 @@ en:
         title: Title  #g
 
   helper:
-    books:
-      common:
-        created: Created book
-        updated: Updated book
-        destroyed: Deleted book
+    common:
+      created: "Created %{name}"
+      updated: "Updated %{name}"
+      destroyed: "Deleted %{name}"
 
   views:
+    common:
+      back: "Back to %{name} list"
+      edit: "Edit %{name}"
+      show: "Show %{name} details"
+      delete: "Delete %{name}"
+      create: "Create new %{name}"
     books:
-      common:
-        back: Back to list
-        edit: Edit
-        show: Show book details
-        delete: Delete
       index:
         title: Book List
-        new: New Book
-        list:
-          title: Title
-          memo: Memo
-          author: Author
-          picture: Picture
-      new:
-        title: New Book
