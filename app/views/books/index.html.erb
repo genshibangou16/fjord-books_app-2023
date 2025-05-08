@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<h1><%= t('views.books.index.title') %></h1>
+<h1><%= t('views.common.index', name: Book.model_name.human) %></h1>
 <div id="books" class="index-items">
   <% @books.each do |book| %>
     <div class="index-item">
@@ -11,5 +11,5 @@
   <% end %>
 </div>
 <nav class="page-nav">
-  <%= link_to t('views.common.create', name: Book.model_name.human), new_book_path %>
+  <%= link_to t('views.common.new', name: Book.model_name.human), new_book_path %>
 </nav>

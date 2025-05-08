@@ -22,7 +22,5 @@ ja:
       edit: "%{name}を編集"
       show: "%{name}の詳細を表示"
       delete: "%{name}を削除"
-      create: "%{name}を新規作成"
-    books:
-      index:
-        title: 本一覧
+      index: "%{name}の一覧"
+      new: "%{name}を新規作成"

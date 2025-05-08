@@ -22,7 +22,5 @@ en:
       edit: "Edit %{name}"
       show: "Show %{name} details"
       delete: "Delete %{name}"
-      create: "Create new %{name}"
-    books:
-      index:
-        title: Book List
+      index: "%{name} list"
+      new: "New %{name}"
