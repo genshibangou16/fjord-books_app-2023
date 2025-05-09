@@ -1,0 +1,19 @@
+<p>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong><%= User.human_attribute_name(:zipcode) %>:</strong>
+  <%= @user.zipcode %>
+</p>
+<p>
+  <strong><%= User.human_attribute_name(:address) %>:</strong>
+  <%= @user.address %>
+</p>
+<p>
+  <strong><%= User.human_attribute_name(:bio) %>:</strong>
+  <%= @user.bio %>
+</p>
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human.downcase)), users_path %>
+</nav>
