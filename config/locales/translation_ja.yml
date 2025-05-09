@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      book: 本  #g
+
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+
+  helper:
+    common:
+      created: "%{name}を作成しました"
+      updated: "%{name}を更新しました"
+      destroyed: "%{name}を削除しました"
+
+  views:
+    common:
+      back: "%{name}の一覧に戻る"
+      edit: "%{name}を編集"
+      show: "%{name}の詳細を表示"
+      delete: "%{name}を削除"
+      index: "%{name}の一覧"
+      new: "%{name}を新規作成"

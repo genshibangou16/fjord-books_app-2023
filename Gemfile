@@ -71,6 +71,8 @@ group :development do
   gem 'rubocop', '~> 1.45.1', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
+
+  gem 'i18n_generators'
 end
 
 group :test do
@@ -80,3 +82,4 @@ group :test do
 end
 
 gem 'carrierwave'
+gem 'rails-i18n'

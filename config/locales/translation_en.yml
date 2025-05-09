@@ -1,0 +1,26 @@
+en:
+  activerecord:
+    models:
+      book: Book  #g
+
+    attributes:
+      book:
+        author: Author  #g
+        memo: Memo  #g
+        picture: Picture  #g
+        title: Title  #g
+
+  helper:
+    common:
+      created: "Created %{name}"
+      updated: "Updated %{name}"
+      destroyed: "Deleted %{name}"
+
+  views:
+    common:
+      back: "Back to %{name} list"
+      edit: "Edit %{name}"
+      show: "Show %{name} details"
+      delete: "Delete %{name}"
+      index: "%{name} list"
+      new: "New %{name}"
