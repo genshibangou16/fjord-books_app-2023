@@ -7,6 +7,11 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        report:
+          attributes:
+            content:
+              invalid_mention: "に存在しない日報(ID: %{ids})へのリンクがあります"
   date:
     abbr_day_names:
     - 日
@@ -202,6 +207,8 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    reports:
+      mentioned_reports: この記事は以下の記事からリンクされています
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

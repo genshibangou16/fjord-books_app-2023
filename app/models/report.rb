@@ -11,6 +11,10 @@ class Report < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+  validate :mentioned_targets_must_exist
+
+  after_create :sync_mentions
+  after_update :sync_mentions, if: :saved_change_to_content?
 
   def editable?(target_user)
     user == target_user
@@ -18,5 +22,45 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
+  end
+
+  private
+
+  def extract_target_ids
+    urls = URI.extract(content.to_s, %w[http https]).uniq
+    urls.map do |url|
+      uri = begin
+        URI.parse(url)
+      rescue StandardError
+        next
+      end
+      next unless uri.host == 'localhost'
+      next unless uri.path.match?(%r{^/reports/\d+$})
+
+      target_id = uri.path.split('/').last.to_i
+      next if target_id == id
+
+      target_id
+    end.compact.uniq
+  end
+
+  def sync_mentions
+    new_target_ids = extract_target_ids
+    old_target_ids = mentions_as_source.pluck(:target_id)
+
+    (new_target_ids - old_target_ids).each do |target_id|
+      mentions_as_source.create!(target_id:)
+    end
+
+    to_remove = old_target_ids - new_target_ids
+    mentions_as_source.where(target: to_remove).destroy_all if to_remove.any?
+  end
+
+  def mentioned_targets_must_exist
+    target_ids = extract_target_ids
+    missing_ids = target_ids - Report.where(id: target_ids).pluck(:id)
+    return if missing_ids.empty?
+
+    errors.add(:content, :invalid_mention, ids: missing_ids.join(', '))
   end
 end
