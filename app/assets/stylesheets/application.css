@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.header {
+    display: flex;
+    gap: var(--global-block-gap);
+}
+
+.user-list, .user-list__row > th, .user-list__row > td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

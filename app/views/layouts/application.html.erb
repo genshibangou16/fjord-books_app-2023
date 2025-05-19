@@ -11,6 +11,17 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <% if user_signed_in? %>
+      <header class="header">
+        <% unless request.path.starts_with? '/users' %>
+          <div><%= link_to t('views.common.edit', name: User.model_name.human), edit_user_registration_path %></div>
+          <div><%= link_to t('views.common.title_index', name: User.model_name.human), users_path %></div>
+        <% end %>
+        <div><%= link_to t('views.common.sign_out'), destroy_user_session_path, data: {turbo_method: :delete} %></div>
+      </header>
+    <% end %>
+    <p class="notice" style="color: green"><%= notice %></p>
+    <p class="alert" style="color: red"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

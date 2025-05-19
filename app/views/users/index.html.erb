@@ -1,0 +1,23 @@
+<h1><%= t('views.common.title_index', name: User.model_name.human) %></h1>
+<table class="user-list">
+  <tr class="user-list__row">
+    <th><%= User.human_attribute_name(:email) %></th>
+    <th><%= User.human_attribute_name(:zipcode) %></th>
+    <th><%= User.human_attribute_name(:address) %></th>
+    <th><%= User.human_attribute_name(:bio) %></th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr class="user-list__row">
+      <td><%= user.email %></td>
+      <td><%= user.zipcode %></td>
+      <td><%= user.address %></td>
+      <td><%= user.bio %></td>
+      <td><%= link_to t('views.common.show', name: User.model_name.human.downcase), user %></td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @users %>
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
+</nav>
