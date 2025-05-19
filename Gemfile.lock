@@ -99,6 +99,12 @@ GEM
       ssrf_filter (~> 1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    database_cleaner (2.1.0)
+      database_cleaner-active_record (>= 2, < 3)
+    database_cleaner-active_record (2.2.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -119,6 +125,11 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.12.0)
+    factory_bot (6.5.1)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
@@ -319,10 +330,12 @@ DEPENDENCIES
   bootsnap
   capybara
   carrierwave
+  database_cleaner
   debug
   devise
   devise-i18n
   erb_lint (~> 0.9.0)
+  factory_bot_rails
   faker
   i18n_generators
   image_processing (~> 1.2)
