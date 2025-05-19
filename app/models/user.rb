@@ -12,7 +12,7 @@ class User < ApplicationRecord
   private
 
   def correct_document_mime_type
-    return unless avatar.attached? && !avatar.content_type.start_with?('image/')
+    return unless avatar.attached? && !avatar.image?
 
     errors.add(:avatar, :must_be_image)
   end
