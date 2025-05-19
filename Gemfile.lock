@@ -325,7 +325,7 @@ DEPENDENCIES
   capybara
   carrierwave
   debug
-  devise (~> 4.9)
+  devise
   devise-i18n
   erb_lint (~> 0.9.0)
   faker
@@ -333,7 +333,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  letter_opener_web (~> 3.0)
+  letter_opener_web
   puma
   rails (~> 7.0.6)
   rubocop (~> 1.45.1)
