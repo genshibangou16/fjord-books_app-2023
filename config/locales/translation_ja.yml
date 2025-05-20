@@ -3,9 +3,6 @@ ja:
     models:
       book: 本
       user: ユーザ
-      active_storage/attachment: アクティブなストレージ/添付ファイル  #g
-      active_storage/blob: アクティブストレージ/ブロブ  #g
-      active_storage/variant_record: アクティブストレージ/バリアントレコード  #g
       report: 日報
       comment: コメント
 
@@ -21,38 +18,9 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
-        avatar_attachment: :activerecord.models.avatar_attachment  #g
-        avatar_blob: :activerecord.models.avatar_blob  #g
-        email: Eメール  #g
-        encrypted_password: 暗号化パスワード  #g
-        remember_created_at: ログイン記憶時刻  #g
-        reset_password_sent_at: パスワードリセット送信時刻  #g
-        reset_password_token: パスワードリセット用トークン  #g
-      active_storage/attachment:
-        blob: :activerecord.models.blob  #g
-        name: 名前  #g
-        record: :activerecord.models.record  #g
-        record_type: レコードタイプ  #g
-      active_storage/blob:
-        attachments: 添付ファイル  #g
-        byte_size: バイトサイズ  #g
-        checksum: チェックサム  #g
-        content_type: コンテンツタイプ  #g
-        filename: ファイル名  #g
-        key: 鍵  #g
-        metadata: メタデータ  #g
-        preview_image_attachment: :activerecord.models.preview_image_attachment  #g
-        preview_image_blob: :activerecord.models.preview_image_blob  #g
-        service_name: サービス名  #g
-        variant_records: バリアントレコード  #g
-      active_storage/variant_record:
-        blob: :activerecord.models.blob  #g
-        image_attachment: :activerecord.models.image_attachment  #g
-        image_blob: :activerecord.models.image_blob  #g
-        variation_digest: バリエーションダイジェスト  #g
       report:
-        memo: メモ  #g
-        title: タイトル  #g
+        memo: メモ
+        title: タイトル
         user_id: :activerecord.models.user
         created_at: 投稿日時
       comment:
