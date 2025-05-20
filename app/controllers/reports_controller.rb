@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
   # GET /reports or /reports.json
   def index
-    @reports = Report.order(created_at: :desc).page(params[:page])
+    @reports = Report.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   # GET /reports/1

@@ -5,7 +5,7 @@
   <% if commentable.comments.length.zero? %>
     <p><%= t('views.common.no_items', name: Comment.model_name.human) %></p>
   <% end %>
-  <% commentable.comments.each do |comment| %>
+  <% commentable.comments.includes(:user).each do |comment| %>
     <div class="show-item">
       <%= render partial: 'comments/comment', locals: { commentable: commentable, comment: comment } %>
     </div>

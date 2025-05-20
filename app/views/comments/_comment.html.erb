@@ -1,7 +1,7 @@
 <div id="<%= dom_id comment %>">
   <p>
     <strong><%= Comment.human_attribute_name(:user_id) %>:</strong>
-    <%= User.find(comment.user_id).name || User.find(comment.user_id).email %>
+    <%= comment.user.name.empty? ? comment.user.email : comment.user.name %>
   </p>
   <p>
     <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
@@ -11,7 +11,7 @@
     <strong><%= Comment.human_attribute_name(:comment) %>:</strong>
     <%= comment.comment %>
   </p>
-  <% if comment.user_id == current_user.id %>
+  <% if comment.user == current_user %>
     <nav class="comment__nav">
       <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([commentable, comment]) %>
       <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), polymorphic_path([commentable, comment]), data: { turbo_method: :delete } %>
