@@ -15,3 +15,7 @@ ja:
         postal_code: 郵便番号
         address: 住所
         self_introduction: 自己紹介文
+        avatar: プロフィール画像
+  errors:
+    messages:
+      must_be_image: は画像でなければなりません
