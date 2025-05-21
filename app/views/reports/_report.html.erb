@@ -5,7 +5,7 @@
   </p>
   <p>
     <strong><%= Report.human_attribute_name(:user_id) %>:</strong>
-    <%= report.user.name.empty? ? report.user.email : report.user.name %>
+    <%= report.user.name_or_email %>
   </p>
   <p>
     <strong><%= Report.human_attribute_name(:title) %>:</strong>
