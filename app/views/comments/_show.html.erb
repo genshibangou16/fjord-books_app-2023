@@ -1,0 +1,13 @@
+<section class="comment">
+  <h2><%= Comment.model_name.human %></h2>
+  <%= render partial: 'comments/form', locals: { commentable: commentable, comment: Comment.new } %>
+  <h3><%= t('views.common.title_index', name: Comment.model_name.human) %></h3>
+  <% if commentable.comments.length.zero? %>
+    <p><%= t('views.common.no_items', name: Comment.model_name.human) %></p>
+  <% end %>
+  <% commentable.comments.includes(:user).each do |comment| %>
+    <div class="show-item">
+      <%= render partial: 'comments/comment', locals: { commentable: commentable, comment: comment } %>
+    </div>
+  <% end %>
+</section>

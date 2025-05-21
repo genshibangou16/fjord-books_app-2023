@@ -1,0 +1,9 @@
+<%= form_with(model: [commentable, comment]) do |form| %>
+  <%= render partial: 'common/error', locals: { errors: comment.errors, model: Comment } if comment.errors.any? %>
+  <div>
+    <%= form.text_area :comment, required: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
