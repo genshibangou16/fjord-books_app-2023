@@ -27,17 +27,9 @@ class Report < ApplicationRecord
   private
 
   def extract_target_ids
-    urls = URI.extract(content.to_s, %w[http https]).uniq
+    urls = content.to_s.scan(%r{http://localhost:3000/reports/\d+}).uniq
     urls.map do |url|
-      uri = begin
-        URI.parse(url)
-      rescue StandardError
-        next
-      end
-      next unless uri.host == 'localhost'
-      next unless uri.path.match?(%r{^/reports/\d+$})
-
-      target_id = uri.path.split('/').last.to_i
+      target_id = url.split('/').last.to_i
       next if target_id == id
 
       target_id
