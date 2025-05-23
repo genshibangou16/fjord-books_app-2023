@@ -27,13 +27,8 @@ class Report < ApplicationRecord
   private
 
   def extract_target_ids
-    urls = content.to_s.scan(%r{http://localhost:3000/reports/\d+}).uniq
-    urls.map do |url|
-      target_id = url.split('/').last.to_i
-      next if target_id == id
-
-      target_id
-    end.compact.uniq
+    target_ids = content.to_s.scan(%r{http://localhost:3000/reports/(\d+)}).uniq
+    target_ids.map { |target_id| target_id[0].to_i if target_id[0].to_i != id }.compact.uniq
   end
 
   def sync_mentions
@@ -50,6 +45,7 @@ class Report < ApplicationRecord
 
   def mentioned_targets_must_exist
     target_ids = extract_target_ids
+    puts "Target IDs: #{target_ids.inspect}"
     missing_ids = target_ids - Report.where(id: target_ids).pluck(:id)
     return if missing_ids.empty?
 
