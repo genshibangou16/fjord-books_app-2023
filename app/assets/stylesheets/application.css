@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.mentions-container {
+    margin-top: 32px;
+    max-width: var(--single-column-w);
+}
