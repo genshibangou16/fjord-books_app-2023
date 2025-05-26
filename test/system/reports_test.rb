@@ -38,9 +38,11 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Report' do
-    visit report_url(@report)
-    click_on 'この日報を削除', match: :first
+    Capybara.using_session 'delete_report' do
+      visit report_url(@report)
+      click_on 'この日報を削除', match: :first
 
-    assert_text '日報が削除されました。'
+      assert_text '日報が削除されました。'
+    end
   end
 end
