@@ -4,22 +4,22 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   test '自分の作成したレポートは編集可能' do
-    user = create(:user)
-    report = create(:report, user:)
+    user = build(:user)
+    report = build(:report, user:)
     assert report.editable?(user)
   end
   test '他人の作成したレポートは編集不可' do
-    user1 = create(:user)
-    user2 = create(:user)
-    report = create(:report, user: user1)
-    assert_not report.editable?(user2)
+    poster = build(:user)
+    viewer = build(:user)
+    report = build(:report, user: poster)
+    assert_not report.editable?(viewer)
   end
-  test 'メンション元が正しい' do
+  test 'メンションが作成され、メンション元が参照できる' do
     mentioned = create(:report)
     report = create(:report, content: "http://localhost:3000/reports/#{mentioned.id}")
     assert_includes mentioned.mentioned_reports, report
   end
-  test 'メンション先が正しい' do
+  test 'メンションが作成され、メンション先を参照できる' do
     mentioned = create(:report)
     report = create(:report, content: "http://localhost:3000/reports/#{mentioned.id}")
     assert_includes report.mentioning_reports, mentioned
@@ -35,7 +35,7 @@ class ReportTest < ActiveSupport::TestCase
     assert_includes report.mentioning_reports, mentioned2
   end
   test '作成日時が取得できる' do
-    report = create(:report)
-    assert_equal report.created_on, report.created_at.to_date
+    report = build(:report, created_at: '2023-10-01 12:00:00')
+    assert_equal Date.parse('2023-10-01'), report.created_on
   end
 end
